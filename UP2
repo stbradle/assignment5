@@ -1,0 +1,13 @@
+		.ORIG x3400
+		
+LOOP	ADD R1, R1, #1		;increment R1
+		BRZP LOOP			;while R1 is non negative, keep adding
+		
+		LD R0, ASTERISK		;if R1 is negative then output ASTERISK
+		OUT					;ASTERISK out to console
+		AND R1, R1, #0		;RESET R1
+		BRNZP LOOP			;Loop to beginning
+		
+ASTERISK   .FILL	x2A		;ASCII value for an asterisk
+
+		.END

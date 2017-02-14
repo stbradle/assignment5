@@ -1,0 +1,22 @@
+	.ORIG	x3000
+	
+	;Set location of TRAP 26 in trap table
+	;Set Location of interrupt service routine in interrupt table
+	;initialize the stack pointer in R6	
+	
+LOOP	TRAP	x26  ; get char
+	TRAP	x21  ; print char to screen
+	TRAP	x26  ; get char
+	TRAP	x21  ; print char to screen
+	TRAP	x26  ; get char
+	TRAP	x21  ; print char to screen
+	TRAP	x26  ; get char
+	TRAP	x21  ; print char to screen
+	TRAP	x26  ; get char
+	TRAP	x21  ; print char to screen
+	LEA	R0, END_MSG
+	PUTS
+	BRnzp LOOP
+
+END_MSG .STRINGZ "\nSuccess!  Running again...\n"
+        .END

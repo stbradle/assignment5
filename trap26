@@ -1,0 +1,12 @@
+		.ORIG	x3300
+		ST R6, MEM_LOC	;Saves PC from UP1 into x32FF --- Stack pointer
+		LD R6, KBSR		;Loads KBSR into R6
+		AND	R6, x4000	;Checks interrupt enable bit of KBSR
+		BRP	END			;if interrupt enable bit is already set, then end TRAP x26
+		ADD R6, x4000	;else if interrupt enable bit is not set, then set it
+		
+		;ehh not 100% sure that this will work
+		;look at syntax for polling to edit KBSR value
+		;shouldnt be too bad
+		
+		
